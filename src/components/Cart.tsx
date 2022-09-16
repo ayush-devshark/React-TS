@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
+import { AppStateContext } from './AppState';
 
 interface Props {}
 
@@ -16,11 +17,11 @@ export default class Cart extends Component<Props, State> {
   }
 
   handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(e.target);
-    console.log(e.currentTarget);
-    if ((e.target as HTMLElement).nodeName === 'SPAN') {
-      (e.target as HTMLElement).innerHTML = 'YO YO YO !';
-    }
+    // console.log(e.target);
+    // console.log(e.currentTarget);
+    // if ((e.target as HTMLElement).nodeName === 'SPAN') {
+    //   (e.target as HTMLElement).innerHTML = 'YO YO YO !';
+    // }
     this.setState(prevState => ({
       isOpen: !prevState.isOpen,
     }));
@@ -28,16 +29,29 @@ export default class Cart extends Component<Props, State> {
 
   render() {
     return (
-      <div>
-        <button type='button' onClick={this.handleClick}>
-          <FiShoppingCart />
-          <span>2 Pizza(s)</span>
-        </button>
-        <div style={{ display: this.state.isOpen ? 'block' : 'none' }}>
-          <li>Napo</li>
-          <li>Mapo</li>
-        </div>
-      </div>
+      <AppStateContext.Consumer>
+        {state => {
+          return (
+            <div>
+              <button type='button' onClick={this.handleClick}>
+                <FiShoppingCart />
+                <span>{state.cart.items.length} Pizza(s)</span>
+              </button>
+              <div style={{ display: this.state.isOpen ? 'block' : 'none' }}>
+                <ul>
+                  {state.cart.items.map(item => {
+                    return (
+                      <li key={item.id}>
+                        {item.name} &times; {item.quantity}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          );
+        }}
+      </AppStateContext.Consumer>
     );
   }
 }

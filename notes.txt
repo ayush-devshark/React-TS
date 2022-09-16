@@ -4,3 +4,7 @@
 
 # Arrow functions
   - 'this' refers to context where it is created  
+
+# useContext value
+ - pass the setState in separate context for optimizing performance, prevents re-renders
+  else, child component will re-render with creation of new value objects
