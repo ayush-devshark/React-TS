@@ -1,0 +1,3 @@
+# Events
+  - target = el at which event occurs
+  - currentTarget = el where event handler attached to
