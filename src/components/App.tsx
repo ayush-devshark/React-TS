@@ -5,8 +5,10 @@ import AppCSS from './App.module.css';
 import PizzaSvg from '../svg/pizza.svg';
 import Cart from './Cart';
 import AppStateProvider from './AppState';
+import SpecialOffer from './SpecialOffer';
 
 const App = () => {
+  const specialOfferPizza = pizzas.find(pizza => pizza.specialOffer);
   return (
     <AppStateProvider>
       <div className={AppCSS.container}>
@@ -15,6 +17,7 @@ const App = () => {
           <div className={AppCSS.siteTitle}>Delicious Pizza</div>
           <Cart />
         </div>
+        {specialOfferPizza && <SpecialOffer pizza={specialOfferPizza} />}
         <ul>
           {pizzas.map(pizza => (
             <PizzaItem key={pizza.id} pizza={pizza} />
