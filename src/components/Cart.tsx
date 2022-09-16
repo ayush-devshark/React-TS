@@ -31,11 +31,14 @@ export default class Cart extends Component<Props, State> {
     return (
       <AppStateContext.Consumer>
         {state => {
+          const itemCount = state.cart.items.reduce((sum, item) => {
+            return sum + item.quantity;
+          }, 0);
           return (
             <div>
               <button type='button' onClick={this.handleClick}>
                 <FiShoppingCart />
-                <span>{state.cart.items.length} Pizza(s)</span>
+                <span>{itemCount} Pizza(s)</span>
               </button>
               <div style={{ display: this.state.isOpen ? 'block' : 'none' }}>
                 <ul>
