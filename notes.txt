@@ -1,3 +1,6 @@
 # Events
   - target = el at which event occurs
   - currentTarget = el where event handler attached to
+
+# Arrow functions
+  - 'this' refers to context where it is created  
