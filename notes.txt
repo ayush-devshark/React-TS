@@ -8,3 +8,7 @@
 # useContext value
  - pass the setState in separate context for optimizing performance, prevents re-renders
   else, child component will re-render with creation of new value objects
+
+# useEffect
+ - no need to specify types explicitly
+ - order matters in multiple useEffect calls
