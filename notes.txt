@@ -12,3 +12,6 @@
 # useEffect
  - no need to specify types explicitly
  - order matters in multiple useEffect calls
+
+# Nodes in HTML
+ - not only HTML elements, but also contains text, comments etc.

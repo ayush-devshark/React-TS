@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import pizzas from '../data/pizzas.json';
 import PizzaItem from './PizzaList';
 import AppCSS from './App.module.css';
@@ -9,6 +9,18 @@ import SpecialOffer from './SpecialOffer';
 
 const App = () => {
   const specialOfferPizza = pizzas.find(pizza => pizza.specialOffer);
+
+  // useEffect(() => {
+  //   const listener = () => {
+  //     alert('Hello There');
+  //   };
+  //   document.addEventListener('mousedown', listener);
+
+  //   return () => {
+  //     document.removeEventListener('mousedown', listener);
+  //   };
+  // }, []);
+
   return (
     <AppStateProvider>
       <div className={AppCSS.container}>
